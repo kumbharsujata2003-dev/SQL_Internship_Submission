@@ -143,3 +143,46 @@ FROM Employee e1
 JOIN Employee e2
 ON e1.emp_name=e2.emp_name
 AND e1.emp_id>e2.emp_id
+
+
+-- Today Task
+-- Date : 24/06/2026
+
+INSERT INTO Employee
+(emp_id, emp_name, dept_id, salary, hire_date)
+VALUES
+(11,'Neha',2,55000,'2026-06-24'),
+(12,'Rohan',3,65000,'2026-06-24');
+
+
+-- Window Function
+
+SELECT 
+emp_id,
+emp_name,
+salary,
+ROW_NUMBER() OVER(ORDER BY salary DESC) AS salary_rank
+FROM Employee;
+
+
+-- CASE WHEN
+
+SELECT 
+emp_name,
+salary,
+CASE
+WHEN salary >= 70000 THEN 'High Salary'
+WHEN salary >= 50000 THEN 'Medium Salary'
+ELSE 'Low Salary'
+END AS salary_category
+FROM Employee;
+
+
+-- View
+
+SELECT * FROM employee_view;
+
+
+-- Trigger
+
+SELECT * FROM employee_log;
