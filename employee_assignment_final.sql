@@ -1,4 +1,4 @@
- Internship SQL Task
+  Internship SQL Task
 -- Date: 23-06-2026
 
 
@@ -75,11 +75,11 @@ WHERE salary < (SELECT MAX(salary) FROM Employee);
 
 SELECT *
 FROM Employee e
-WHERE salary >
+WHERE e.salary >
 (
-SELECT AVG(salary)
-FROM Employee
-WHERE dept_id=e.dept_id
+SELECT AVG(e2.salary)
+FROM Employee e2
+WHERE e2.dept_id = e.dept_id
 );
 
 
@@ -129,6 +129,14 @@ HAVING COUNT(*) > 1;
 
 
 -- Q10: Remove duplicate employee records
+
+SET SQL_SAFE_UPDATES = 0
+
+DELETE e1
+FROM Employee e1
+JOIN Employee e2
+ON e1.emp_name = e2.emp_name
+AND e1.emp_id > e2.emp_id;
 
 DELETE e1
 FROM Employee e1
